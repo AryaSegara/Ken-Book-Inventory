@@ -3,12 +3,12 @@ import jwt from "jsonwebtoken";
 import { pool } from "../config/database.js";
 
 export const registerUser = async (req, res) => {
-  const { username, email, password, fullname } = req.body;
+  const { username, email, password} = req.body;
   try {
     const hash = await argon2.hash(password);
     const result = await pool.query(
-      "INSERT INTO users (username, email, password, fullname) VALUES ($1, $2, $3, $4) RETURNING *",
-      [username, email, hash, fullname]
+      "INSERT INTO admin (username, email, password) VALUES ($1, $2, $3) RETURNING *",
+      [username, email, hash]
     );
     res.status(201).json({ message: "Register Success", data: result.rows[0] });
   } catch (err) {
@@ -17,10 +17,10 @@ export const registerUser = async (req, res) => {
   }
 };
 
-export const loginUser = async (req, res) => {
+export const loginAdmin = async (req, res) => {
   const { username, password } = req.body;
   try {
-    const result = await pool.query("SELECT * FROM users WHERE username = $1", [
+    const result = await pool.query("SELECT * FROM admin WHERE username = $1", [
       username,
     ]);
 
@@ -29,6 +29,7 @@ export const loginUser = async (req, res) => {
         result.rows[0].password,
         password
       );
+      // console.log(testPassword);
 
       if (testPassword) {
         const token = jwt.sign(result.rows[0], process.env.SECRET_KEY);
@@ -42,11 +43,37 @@ export const loginUser = async (req, res) => {
           message: "Login Success",
         });
       } else {
-        res.status(401).json({ message: "Password Salah" });
+        res.status(401).json({ message: "Password wrong" });
       }
     } else {
-      res.status(401).json({ message: "Username Tidak Terdaftar" });
+      res.status(401).json({ message: "Username Not Registered" });
     }
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+};
+
+export const updateAccount = async (req, res) => {
+  const { username, email, fullname } = req.body;
+  const { id } = req.params;
+  try {
+    const result = await pool.query(
+      "UPDATE users SET username = $1, email = $2, fullname = $3 WHERE id = $4 RETURNING *",
+      [username, email, fullname, id]
+    );
+    res.status(200).json({ message: "Update Success", data: result.rows[0] });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+};
+
+export const deleteAccount = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const result = await pool.query("DELETE FROM users WHERE id = $1", [id]);
+    res.status(200).json({ message: "Delete Success", data: result.rows[0] });
   } catch (err) {
     console.log(err);
     res.status(500).json({ message: "Internal Server Error" });
