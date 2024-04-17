@@ -29,7 +29,8 @@ const AllBook = () => {
               </h5>
               <div className="font-normal text-gray-700 dark:text-gray-400">
                 <p>
-                  {book.penulis}
+                  {book.penulis} | {book.harga}
+
                   Klik Button di bawah ini
                 </p>
               </div>
