@@ -1,29 +1,27 @@
-// import { createContext, useState ,useEffect } from "react";
-import MyFooter from "./components/MyFooter";
-import Navbar from "./components/Navbar";
+import { createContext, useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
-// import { api } from "./util";
+import { api } from "./until";
 
-// export const AllContext = createContext();
+export const AuthContext = createContext();
 
 function App() {
-  // const [books,setBooks] = useState([]);
+  const [admin, setAdmin] = useState({});
 
-  // useEffect(() =>{
-  //   api.get("/api/getAllBook")
-  //   .then((response) => {
-  //     setBooks(response.data);
-  //   })
-  // },[]);
+  useEffect(() => {
+    api("/book/me").then((user) => {
+      if (!user) {
+        setAdmin(null);
+      }
+      setAdmin(user);
+    });
+  }, [admin?.id]);
 
   return (
-    <div>
-      <Navbar />
+    <AuthContext.Provider value={{ admin,setAdmin }}>
       <div className="min-h-screen">
-        <Outlet />
+        <Outlet context={[admin,setAdmin]} />
       </div>
-      <MyFooter />
-    </div>
+    </AuthContext.Provider>
   );
 }
 

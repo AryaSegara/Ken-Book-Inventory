@@ -4,42 +4,40 @@ import App from "./App.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import About from "./components/About.jsx";
-import Blog from "./components/Blog.jsx";
 import Home from "./home/Home.jsx";
-import Shopp from "./shop/Shopp.jsx";
-import SingleBook from "./shop/SingleBook.jsx";
+import SingleBook from "./allbook/SingleBook.jsx";
 import DashboardLayout from "./dashboard/DashboardLayout.jsx";
-import Dashboard from "./dashboard/Dashboard.jsx";
 import UploadBook from "./dashboard/UploadBook.jsx";
 import ManageBook from "./dashboard/ManageBook.jsx";
 import EditBook from "./dashboard/EditBook.jsx";
+import DataBook from "./dashboard/DataBook.jsx";
+import Login from "./home/Login.jsx";
+import AllBook from "./allbook/AllBook.jsx";
 
-const router = createBrowserRouter([
+const pages = [
   {
-    path: "/",
-    element: <App />,
+      path:"/login",
+      element:<Login />,
+  },
+  {
     children: [
       {
         path: "/",
         element: <Home />,
       },
       {
-        path: "/shop",
-        element: <Shopp />,
+        path: "/allbook",
+        element: <AllBook />,
       },
       {
         path: "/about",
         element: <About />,
       },
       {
-        path: "/blog",
-        element: <Blog />,
-      },
-      {
         path: "/book/:id",
         element: <SingleBook />,
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/api/getBookById/${params.id}`),
+          fetch(`http://localhost:3000/book/getBookById/${params.id}`),
       },
     ],
   },
@@ -47,10 +45,6 @@ const router = createBrowserRouter([
     path: "/admin/dashboard",
     element: <DashboardLayout />,
     children: [
-      {
-        path: "/admin/dashboard",
-        element: <Dashboard />,
-      },
       {
         path: "/admin/dashboard/upload",
         element: <UploadBook />,
@@ -60,13 +54,27 @@ const router = createBrowserRouter([
         element: <ManageBook />,
       },
       {
+        path: "/admin/dashboard/databook",
+        element: <DataBook />,
+      },
+      {
         path: "/admin/dashboard/edit-book/:id",
         element: <EditBook />,
+        loader: ({ params }) =>
+          fetch(`http://localhost:3000/book/getBookById/${params.id}`),
       },
-
     ],
   },
+];
+
+
+const router = createBrowserRouter([
+  {
+    element: <App />,
+    children: pages,
+  }
 ]);
+
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>

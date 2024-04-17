@@ -1,0 +1,8 @@
+{
+    "judul_buku":"SPY×FAMILY 1",
+    "penulis":"Tatsuya Endo",
+    "harga":69000,
+    "gambar":"https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1562168651l/52961491.jpg",
+    "deskripsi":"Twilight adalah mata-mata berbakat yang diperintahkan untuk membentuk 'keluarga' untuk menyusup ke sekolah bergengsi. Namun, 'putriny' yang dia temui adalah seorang paranormal yang bisa membaca pikiran! 'Istrinya' adalah seorang pembunuh!? Sebuah komedi situasi mendebarkan di mana sebuah keluarga sementara yang menyembunyikan identitas asli mereka satu sama lain menghadapi ujian dan krisis dunia!!",
+    "id_kategori":6
+}
