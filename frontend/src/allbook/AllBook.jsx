@@ -30,15 +30,13 @@ const AllBook = () => {
               <div className="font-normal text-gray-700 dark:text-gray-400">
                 <p>
                   {book.penulis} | {book.harga}
-
-                  Klik Button di bawah ini
                 </p>
               </div>
               <Link to={`/book/${book.id_buku}`}>
                 <div className="bg-blue-700 text-white font-semibold px-5 py-2 rounded hover:bg-black transition-all duration-300 text-center">
                   Show Now
                 </div>
-                </Link>
+              </Link>
             </Card>
           ))}
         </div>
