@@ -23,7 +23,6 @@ export const getBookById = async (req, res) => {
 }                                                                                                                                                                             
 
 export const addBook = async (req, res) => {
-  console.log(req.body);
   try {
     const result = await pool.query(
       "INSERT INTO buku (judul_buku, penulis, harga, gambar, id_kategori, deskripsi) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *",
@@ -32,7 +31,6 @@ export const addBook = async (req, res) => {
         req.body.penulis,
         req.body.harga,
         req.body.gambar,
-        // req.body.category,
         req.body.id_kategori,
         req.body.deskripsi,
       ]
