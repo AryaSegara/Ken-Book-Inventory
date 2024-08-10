@@ -10,7 +10,7 @@ const AllBook = () => {
   const [books, setBooks] = useState([]);
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_BASE_URL}/book/getAllBook`)
+    fetch(`${import.meta.env.VITE_API_BASE_URL}/api/book/getAllBook`)
       .then((response) => response.json())
       .then((data) => setBooks(data.slice(0, 8)));
   }, []);

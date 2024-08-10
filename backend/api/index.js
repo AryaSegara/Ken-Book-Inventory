@@ -19,9 +19,9 @@ app.use(
 app.use(express.json());
 app.use(cookieParser());
 
-app.use("/auth", AuthRoute); //admin
-app.use("/book", BookRoute); //book
-app.use("/kategori", KategoriRoute); //kategori
+app.use("/api/auth", AuthRoute); //admin
+app.use("/api/book", BookRoute); //book
+app.use("/api/kategori", KategoriRoute); //kategori
 
 app.listen(port, () => {
   console.log("Server Berhasil Di Jalankan");

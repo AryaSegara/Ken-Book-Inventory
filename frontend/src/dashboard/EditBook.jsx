@@ -32,7 +32,7 @@ const EditBook = () => {
 
     //updateBook
     const token = localStorage.getItem("token");
-    fetch(`${import.meta.env.VITE_API_BASE_URL}/book/updateBook/` + id, {
+    fetch(`${import.meta.env.VITE_API_BASE_URL}/api/book/updateBook/` + id, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -49,7 +49,7 @@ const EditBook = () => {
   };
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_BASE_URL}/kategori/getAllKategori`)
+    fetch(`${import.meta.env.VITE_API_BASE_URL}/api/kategori/getAllKategori`)
       .then((response) => response.json())
       .then((data) => setSelectedCategory(data));
   }, []);

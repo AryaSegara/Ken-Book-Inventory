@@ -6,7 +6,7 @@ const UploadBook = () => {
   const [editedKategori, setEditedKategori] = useState({});
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_BASE_URL}/kategori/getAllKategori`)
+    fetch(`${import.meta.env.VITE_API_BASE_URL}/api/kategori/getAllKategori`)
       .then((response) => response.json())
       .then((data) => setSelectedCategory(data));
   }, []);
@@ -33,7 +33,7 @@ const UploadBook = () => {
     };
     //UploadBook
     const token = localStorage.getItem("token");
-    fetch(`${import.meta.env.VITE_API_BASE_URL}/book/addBook`, {
+    fetch(`${import.meta.env.VITE_API_BASE_URL}/api/book/addBook`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

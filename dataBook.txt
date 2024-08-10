@@ -6,3 +6,7 @@
     "deskripsi":"Twilight adalah mata-mata berbakat yang diperintahkan untuk membentuk 'keluarga' untuk menyusup ke sekolah bergengsi. Namun, 'putriny' yang dia temui adalah seorang paranormal yang bisa membaca pikiran! 'Istrinya' adalah seorang pembunuh!? Sebuah komedi situasi mendebarkan di mana sebuah keluarga sementara yang menyembunyikan identitas asli mereka satu sama lain menghadapi ujian dan krisis dunia!!",
     "id_kategori":6
 }
+
+// password admin nya
+admin00 
+admin123

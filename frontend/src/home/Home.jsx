@@ -7,11 +7,6 @@ import FavBook from "./FavBook";
 import PromoBanner from "./PromoBanner";
 
 const Home = () => {
-  const [admin, 
-      // setAdmin
-        ] = useOutletContext();
-
-  if (admin) {
     return (
       <>
         <Navbar />
@@ -22,9 +17,6 @@ const Home = () => {
         <MyFooter />
       </>
     );
-  }else{
-    return <Navigate to="/login"/>
-  }
 };
 
 export default Home;
