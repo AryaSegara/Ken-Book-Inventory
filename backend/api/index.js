@@ -26,3 +26,5 @@ app.use("/api/kategori", KategoriRoute); //kategori
 app.listen(port, () => {
   console.log("Server Berhasil Di Jalankan");
 });
+
+export default app;
