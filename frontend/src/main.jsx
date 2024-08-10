@@ -37,7 +37,7 @@ const pages = [
         path: "/book/:id",
         element: <SingleBook />,
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/book/getBookById/${params.id}`),
+          fetch(`${import.meta.env.VITE_API_BASE_URL}/book/getBookById/${params.id}`),
       },
     ],
   },
@@ -61,7 +61,7 @@ const pages = [
         path: "/admin/dashboard/edit-book/:id",
         element: <EditBook />,
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/book/getBookById/${params.id}`),
+          fetch(`${import.meta.env.VITE_API_BASE_URL}/book/getBookById/${params.id}`),
       },
     ],
   },
