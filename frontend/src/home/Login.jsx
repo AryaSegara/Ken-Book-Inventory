@@ -34,7 +34,7 @@ const Login = () => {
                   );
                   if(response.ok){
                     const auth = await response.json();
-                    localStorage.setItem("token",auth.token)
+                    // localStorage.setItem("token",auth.token)
                     setAdmin(auth.user)
                     navigate("/admin/dashboard");
                     alert("Login Berhasil");
