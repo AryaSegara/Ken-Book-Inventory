@@ -1,4 +1,4 @@
-import { Navigate, useOutletContext } from "react-router-dom";
+// import { Navigate, useOutletContext } from "react-router-dom";
 import Banner from "../components/Banner";
 import MyFooter from "../components/MyFooter";
 import Navbar from "../components/Navbar";
