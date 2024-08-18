@@ -1,9 +1,9 @@
-import { Navigate, useNavigate, useOutletContext } from "react-router-dom";
+import { Navigate, useOutletContext } from "react-router-dom";
 import { useState } from "react";
 // import { api } from "../until";
 
 const Login = () => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const [admin, setAdmin] = useOutletContext();
   const [login, setLogin] = useState({ username: "", password: "" });
 
@@ -30,19 +30,18 @@ const Login = () => {
 
                       },
                       body: JSON.stringify(login),
-                    }
-                  );
-                  if(response.ok){
+                    })
+                  .then(response.ok)
                     const auth = await response.json();
                     localStorage.setItem("token",auth.token)
                     setAdmin(auth.user)
-                    navigate("/");
+                    // navigate("/");
                     alert("Login Berhasil");
-                    window.location.reload();
-                  }else{
-                    const message = await response.text();
-                    alert(message);
-                  }
+                    window.location.href="/admin/dashboard";
+                  // .then
+                  //   const message = await response.text();
+                  //   alert(message);
+                  // }
                   }}
                   className="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7"
                 >
