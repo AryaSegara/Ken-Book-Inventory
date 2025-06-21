@@ -14,6 +14,8 @@ const AllBook = () => {
       .then((response) => response.json())
       .then((data) => setBooks(data.slice(0, 8)));
   }, []);
+
+  
   return (
     <>
       <Navbar />
